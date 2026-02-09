@@ -35,9 +35,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<video src="frontend/public/Codepath2026.mov" controls width="800"></video>
+Loom: https://www.loom.com/share/575a2ac423f1487db70c120eafe7bdaa
 
-[Direct download](frontend/public/Codepath2026.mov)
+Local video: [Codepath2026.mov](frontend/public/Codepath2026.mov)
+
+Screenshot:
+
+![View All Screen](frontend/public/ViewAllScreen.png)
 
 
 
