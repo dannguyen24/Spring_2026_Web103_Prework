@@ -19,11 +19,6 @@ const buildSocialUrl = (platform, value) => {
     }
 };
 
-const normalizeUrl = (url) => {
-    if (!url) return '';
-    return url.startsWith('http') ? url : `https://${url}`;
-};
-
 const CreatorCard = ({ creator }) => {
     const navigate = useNavigate();
 
@@ -33,13 +28,9 @@ const CreatorCard = ({ creator }) => {
 
     const name = creator.name || 'Unknown Creator';
     const description = creator.description || 'No description provided.';
-    const image = creator.image || creator.image_url || creator.imageURL || 'https://via.placeholder.com/600x400?text=No+Image';
+    const image = creator.imageURL || 'https://via.placeholder.com/600x400?text=No+Image';
 
-    const youtube = creator.youtube || creator.youtube_url || creator.socialLinks?.youtube;
-    const twitter = creator.twitter || creator.twitter_url || creator.socialLinks?.twitter;
-    const instagram = creator.instagram || creator.instagram_url || creator.socialLinks?.instagram;
-
-    const personalUrl = creator.url || creator.website || creator.personalUrl;
+    const { youtube, twitter, instagram } = creator.url || {};
 
     const handleCardClick = () => {
         if (creator.id) {
@@ -77,8 +68,8 @@ const CreatorCard = ({ creator }) => {
                 </div>
 
                 <div className={styles.actionRow}>
-                    {personalUrl && (
-                        <a className={styles.actionButton} href={normalizeUrl(personalUrl)} target="_blank" rel="noreferrer" onClick={stopPropagation}>
+                    {creator.url && creator.url.personal && (
+                        <a className={styles.actionButton} href={creator.url.personal} target="_blank" rel="noreferrer" onClick={stopPropagation}>
                             More Info
                         </a>
                     )}

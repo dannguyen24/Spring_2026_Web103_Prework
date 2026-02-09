@@ -19,11 +19,6 @@ const buildSocialUrl = (platform, value) => {
     }
 };
 
-const normalizeUrl = (url) => {
-    if (!url) return '';
-    return url.startsWith('http') ? url : `https://${url}`;
-};
-
 const ContentCreator = ({ creator }) => {
     if (!creator) {
         return (
@@ -35,13 +30,9 @@ const ContentCreator = ({ creator }) => {
 
     const name = creator.name || 'Unknown Creator';
     const description = creator.description || 'No description provided.';
-    const image = creator.image || creator.image_url || creator.imageURL || 'https://via.placeholder.com/600x400?text=No+Image';
+    const image = creator.imageURL || 'https://via.placeholder.com/600x400?text=No+Image';
 
-    const youtube = creator.youtube || creator.youtube_url || creator.socialLinks?.youtube;
-    const twitter = creator.twitter || creator.twitter_url || creator.socialLinks?.twitter;
-    const instagram = creator.instagram || creator.instagram_url || creator.socialLinks?.instagram;
-
-    const personalUrl = creator.url || creator.website || creator.personalUrl;
+    const { youtube, twitter, instagram } = creator.url || {};
 
     return (
         <div className={styles.contentCreator}>
@@ -67,11 +58,6 @@ const ContentCreator = ({ creator }) => {
                     )}
                 </div>
                 <div className={styles.buttons}>
-                    {personalUrl && (
-                        <a className={styles.primary} href={normalizeUrl(personalUrl)} target="_blank" rel="noreferrer">
-                            More Info
-                        </a>
-                    )}
                     {creator.id && (
                         <Link className={styles.secondary} to={`/edit/${creator.id}`}>
                             Edit
