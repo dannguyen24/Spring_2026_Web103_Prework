@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './ContentCreator.module.css';
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './CreatorCard.module.css';
 
 const buildSocialUrl = (platform, value) => {
     if (!value) return null;
@@ -24,13 +24,11 @@ const normalizeUrl = (url) => {
     return url.startsWith('http') ? url : `https://${url}`;
 };
 
-const ContentCreator = ({ creator }) => {
+const CreatorCard = ({ creator }) => {
+    const navigate = useNavigate();
+
     if (!creator) {
-        return (
-            <div className={styles.contentCreator}>
-                <p>Content creator not found.</p>
-            </div>
-        );
+        return null;
     }
 
     const name = creator.name || 'Unknown Creator';
@@ -43,37 +41,49 @@ const ContentCreator = ({ creator }) => {
 
     const personalUrl = creator.url || creator.website || creator.personalUrl;
 
+    const handleCardClick = () => {
+        if (creator.id) {
+            navigate(`/creators/${creator.id}`);
+        }
+    };
+
+    const stopPropagation = (event) => {
+        event.stopPropagation();
+    };
+
     return (
-        <div className={styles.contentCreator}>
-            <img className={styles.heroImage} src={image} alt={`${name} profile`} />
-            <div className={styles.details}>
-                <h1>{name}</h1>
+        <div className={styles.card} onClick={handleCardClick} role="button" tabIndex={0} onKeyDown={(event) => event.key === 'Enter' && handleCardClick()}>
+            <img className={styles.avatar} src={image} alt={`${name} profile`} />
+            <div className={styles.content}>
+                <h2 className={styles.name}>{name}</h2>
                 <p className={styles.description}>{description}</p>
-                <div className={styles.socialLinks}>
+
+                <div className={styles.socialRow}>
                     {youtube && (
-                        <a href={buildSocialUrl('youtube', youtube)} target="_blank" rel="noreferrer">
-                            ▶ YouTube
+                        <a className={styles.iconButton} href={buildSocialUrl('youtube', youtube)} target="_blank" rel="noreferrer" aria-label="YouTube" onClick={stopPropagation}>
+                            ▶
                         </a>
                     )}
                     {twitter && (
-                        <a href={buildSocialUrl('twitter', twitter)} target="_blank" rel="noreferrer">
-                            𝕏 Twitter
+                        <a className={styles.iconButton} href={buildSocialUrl('twitter', twitter)} target="_blank" rel="noreferrer" aria-label="Twitter" onClick={stopPropagation}>
+                            𝕏
                         </a>
                     )}
                     {instagram && (
-                        <a href={buildSocialUrl('instagram', instagram)} target="_blank" rel="noreferrer">
-                            ◎ Instagram
+                        <a className={styles.iconButton} href={buildSocialUrl('instagram', instagram)} target="_blank" rel="noreferrer" aria-label="Instagram" onClick={stopPropagation}>
+                            ◎
                         </a>
                     )}
                 </div>
-                <div className={styles.buttons}>
+
+                <div className={styles.actionRow}>
                     {personalUrl && (
-                        <a className={styles.primary} href={normalizeUrl(personalUrl)} target="_blank" rel="noreferrer">
+                        <a className={styles.actionButton} href={normalizeUrl(personalUrl)} target="_blank" rel="noreferrer" onClick={stopPropagation}>
                             More Info
                         </a>
                     )}
                     {creator.id && (
-                        <Link className={styles.secondary} to={`/edit/${creator.id}`}>
+                        <Link className={styles.actionButton} to={`/edit/${creator.id}`} onClick={stopPropagation}>
                             Edit
                         </Link>
                     )}
@@ -83,4 +93,4 @@ const ContentCreator = ({ creator }) => {
     );
 };
 
-export default ContentCreator;
+export default CreatorCard;

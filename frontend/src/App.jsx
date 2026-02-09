@@ -1,12 +1,12 @@
-import { useRoutes, Link, useEffect, useState } from 'react-router-dom';
-import './App.css'
+import { useRoutes, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './styles/theme.css';
 import ViewContentCreators from './pages/ViewContentCreators';
+import ViewContentCreator from './pages/ViewContentCreator';
 import AddContentCreator from './pages/AddContentCreator';
 import EditContentCreator from './pages/EditContentCreator';
 import DeleteContentCreator from './pages/DeleteContentCreator';
-import { supabase } from './client';
-
+import supabase from './client';
 function App() {
   const [contentCreators, setContentCreators] = useState([]);
 
@@ -28,6 +28,7 @@ function App() {
 
   const routes = useRoutes([
     { path: '/', element: <ViewContentCreators contentCreators={contentCreators} /> },
+    { path: '/creators/:id', element: <ViewContentCreator /> },
     { path: '/add', element: <AddContentCreator /> },
     { path: '/edit/:id', element: <EditContentCreator /> },
     { path: '/delete/:id', element: <DeleteContentCreator /> },

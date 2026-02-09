@@ -1,0 +1,73 @@
+.edit-creator-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-family: var(--font-family);
+}
+
+.edit-creator-container h1 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.edit-creator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.edit-creator-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    color: var(--color-text);
+}
+
+.edit-creator-form input,
+.edit-creator-form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--color-muted-text);
+    border-radius: var(--border-radius);
+    outline: none;
+}
+
+.edit-creator-form .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.edit-creator-form button {
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-creator-form button:hover {
+    background-color: var(--color-primary-light);
+}
+
+.edit-creator-form .delete-button {
+    background-color: #ff4d4d;
+}
+
+.edit-creator-form .delete-button:hover {
+    background-color: #ff6666;
+}
+
+.message {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-primary);
+}
