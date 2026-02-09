@@ -1,0 +1,53 @@
+/* Theme Colors */
+:root {
+    --color-background: #f5f5dc; /* Beige */
+    --color-primary: #ff69b4; /* Pink */
+    --color-primary-light: #ff85c1; /* Lighter Pink */
+    --color-text: #333; /* Dark Text */
+    --color-muted-text: #555; /* Muted Text */
+    --font-family: 'Arial', sans-serif;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+button {
+    font-family: var(--font-family);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.primary {
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+button.primary:hover {
+    background-color: var(--color-primary-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    margin: 20px 0;
+}
