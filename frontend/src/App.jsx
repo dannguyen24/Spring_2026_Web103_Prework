@@ -1,5 +1,6 @@
 import { useRoutes, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import './App.css';
 import './styles/theme.css';
 import ViewContentCreators from './pages/ViewContentCreators';
 import ViewContentCreator from './pages/ViewContentCreator';
@@ -35,15 +36,21 @@ function App() {
   ]);
 
   return (
-    <>
-      <nav>
-        <ul>
-          <li><Link to="/">View All Creators</Link></li>
-          <li><Link to="/add">Add Creator</Link></li>
-        </ul>
+    <div className="app">
+      <nav className="nav-container">
+        <div className="nav-buttons">
+          <Link to="/" className="nav-button">
+            View All Creators
+          </Link>
+          <Link to="/add" className="nav-button">
+            Add Creator
+          </Link>
+        </div>
       </nav>
-      {routes}
-    </>
+      <main className="main-content">
+        {routes}
+      </main>
+    </div>
   );
 }
 

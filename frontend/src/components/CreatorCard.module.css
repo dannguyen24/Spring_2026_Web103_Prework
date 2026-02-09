@@ -1,91 +1,105 @@
 .card {
-    background: linear-gradient(135deg, #3c3f4a, #4d4f58);
-    color: #fff;
-    border-radius: 18px;
-    padding: 20px;
+    background: var(--color-card-background);
+    color: var(--color-text);
+    border-radius: 16px;
+    padding: 24px;
     display: grid;
     gap: 16px;
     align-items: center;
-    grid-template-columns: 120px 1fr;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    grid-template-columns: 100px 1fr;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f0f0f0;
+    transition: all 0.2s ease;
     cursor: pointer;
-    min-height: 180px;
+    min-height: 160px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border-color: #f8a5c2;
 }
 
 .avatar {
-    width: 120px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
-    border-radius: 14px;
-    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    background-color: var(--color-border);
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--spacing-sm);
 }
 
 .name {
-    font-size: 1.5rem;
-    letter-spacing: 1px;
+    font-size: 1.25rem;
+    font-weight: 600;
     margin: 0;
-    text-transform: uppercase;
+    color: var(--color-text);
+    letter-spacing: -0.025em;
 }
 
 .description {
     margin: 0;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.4;
+    color: var(--color-muted-text);
+    line-height: 1.5;
+    font-size: 0.9rem;
 }
 
 .socialRow {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     margin-top: 4px;
 }
 
 .iconButton {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #fff;
-    font-size: 0.95rem;
+    background-color: #f8a5c2;
+    color: white;
+    font-size: 0.8rem;
     text-decoration: none;
+    transition: all 0.2s ease;
 }
 
 .iconButton:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: #e598b8;
+    transform: scale(1.1);
 }
 
 .actionRow {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     flex-wrap: wrap;
-    margin-top: 6px;
+    margin-top: 8px;
 }
 
 .actionButton {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-size: 0.9rem;
+    background-color: #f0f0f0;
+    color: #2a2a2a;
+    padding: 4px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
     text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid #f0f0f0;
 }
 
 .actionButton:hover {
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: #f8a5c2;
+    color: white;
+    border-color: #f8a5c2;
 }
 
 @media (max-width: 640px) {
